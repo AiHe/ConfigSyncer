@@ -25,16 +25,12 @@ object Util {
       zip.closeEntry()
     }
     zip.close()
-//    val fos = new FileOutputStream("try.zip")
-//    fos.write(baos.toByteArray)
-//    fos.close()
     baos.toByteArray
   }
 
   def unZip(str: Array[Byte], dir: File): Unit = {
 
     val buffer = new Array[Byte](1024)
-//    println(str.getBytes())
     try {
       val zis: ZipInputStream = new ZipInputStream(new ByteArrayInputStream(str))
       var ze: ZipEntry = zis.getNextEntry()
@@ -43,7 +39,7 @@ object Util {
         val fileName = ze.getName()
         val newFile = new File(dir + File.separator + fileName)
 
-        System.out.println("file unzip : " + newFile.getAbsoluteFile())
+        println("file unzip : " + newFile.getAbsoluteFile())
 
         new File(newFile.getParent()).mkdirs()
         val fos = new FileOutputStream(newFile)
@@ -56,6 +52,7 @@ object Util {
         fos.close()
         ze = zis.getNextEntry()
       }
+      println("file unzip : " + ("-------"*10))
       zis.closeEntry()
       zis.close()
     } catch {

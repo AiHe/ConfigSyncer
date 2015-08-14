@@ -30,10 +30,7 @@ class ConfigWatcher(connection: String, dirStr: String) extends Watcher {
   }
 
   def read(path: String, watcher: Watcher) = {
-    zk.map(z => {
-        val data = z.getData(path, watcher, null)
-        data
-    })
+    zk.map(z => z.getData(path, watcher, null))
   }
 
   override def process(event: WatchedEvent): Unit = {
