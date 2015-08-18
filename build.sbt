@@ -23,3 +23,5 @@ libraryDependencies ++= Seq(
 ).map(_.force())
 
 libraryDependencies ~= { _.map(_.exclude("org.slf4j", "slf4j-jdk14")) }
+
+libraryDependencies += "net.contentobjects.jnotify" % "jnotify" % "0.94"
